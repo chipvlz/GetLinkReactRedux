@@ -1,10 +1,11 @@
 import React from 'react';
 import { Divider } from 'semantic-ui-react';
-import { Message, Icon, Form, Button, Input } from 'semantic-ui-react';
+import { Message, Icon, Form, Button, Input, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import successResult from './successResult';
 import './ContentGetlink.css';
 
-const GetLink = ({ onClickGetLink, onChangeUrl }) => {
+const GetLink = ({ lastGetStatus, onClickGetLink, onChangeUrl }) => {
   const searchButton = (
     <Button
       animated="vertical"
@@ -16,8 +17,21 @@ const GetLink = ({ onClickGetLink, onChangeUrl }) => {
       <Icon name="search" />&nbsp;GET LINK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </Button>
   );
+  const getResult = (lastGetStatus) => {
+    const lastArrayStatus = lastGetStatus[lastGetStatus.length - 1];
+    switch (lastArrayStatus.status) {
+      case 'success':
+        return successResult(lastArrayStatus.linkObject);
+      case 'fail':
+        return <div>fail</div>;
+      case 'error':
+        return <div>error</div>;
+      default:
+        return <div>Something wrong! Try again!</div>;
+    }
+  };
   return (
-    <div>
+    <div className="content-body">
       <div className="notify">
         <Message positive>
           <p>
@@ -49,6 +63,9 @@ const GetLink = ({ onClickGetLink, onChangeUrl }) => {
             />
           </Form.Field>
         </Form>
+      </div>
+      <div className="show-result">
+        {lastGetStatus.length === 0 ? 'justinit' : getResult(lastGetStatus)}
       </div>
     </div>
   );

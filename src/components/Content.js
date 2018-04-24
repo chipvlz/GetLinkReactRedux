@@ -4,12 +4,23 @@ import GetLink from './contents/ContentGetLink';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const Content = ({ activePage, inputUrl, onClickGetLink, onChangeUrl }) => {
+const Content = ({
+  activePage,
+  inputUrl,
+  lastGetStatus,
+  onClickGetLink,
+  onChangeUrl,
+}) => {
   const getContent = (activePage) => {
     switch (activePage) {
       case 'getlink':
         return (
-          <GetLink onClickGetLink={onClickGetLink} onChangeUrl={onChangeUrl} />
+          <GetLink
+            inputUrl={inputUrl}
+            lastGetStatus={lastGetStatus}
+            onClickGetLink={onClickGetLink}
+            onChangeUrl={onChangeUrl}
+          />
         );
       case 'sphosts':
         return '';

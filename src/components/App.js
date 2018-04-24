@@ -1,7 +1,7 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Container } from 'semantic-ui-react';
-import Logo from './Logo';
+import ShowLogo from '../containers/ShowLogo';
 import ActiveMenu from '../containers/ActiveMenu';
 import ActiveContent from '../containers/ActiveContent';
 import './App.css';
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <Container>
-        <Logo />
+        <ShowLogo />
         <ActiveMenu />
         <ActiveContent />
       </Container>

@@ -24,6 +24,10 @@ const GetLink = ({ lastGetStatus, onClickGetLink, onChangeUrl }) => {
         return successResult(lastArrayStatus.linkObject);
       case 'fail':
         return <div>fail</div>;
+      case 'not sp':
+        return <div>not sp</div>;
+      case 'blank':
+        return <div>blank</div>;
       case 'error':
         return <div>error</div>;
       default:

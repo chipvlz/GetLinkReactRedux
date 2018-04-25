@@ -3,6 +3,7 @@ import { Segment } from 'semantic-ui-react';
 import GetLink from './contents/ContentGetLink';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import './Content.css';
 
 const Content = ({
   activePage,
@@ -34,7 +35,11 @@ const Content = ({
         return 'What?';
     }
   };
-  return <Segment attached="bottom">{getContent(activePage)}</Segment>;
+  return (
+    <Segment id="main-content" attached="bottom">
+      {getContent(activePage)}
+    </Segment>
+  );
 };
 export default Content;
 Content.propTypes = {

@@ -1,30 +1,104 @@
 import React from 'react';
-import { Card, Image, Icon } from 'semantic-ui-react';
+import { Card, Image, Icon, Dropdown, Menu, Message } from 'semantic-ui-react';
+import './successResult.css';
 
 const successResult = (lastLinkObject) => {
   switch (lastLinkObject.type) {
     case 'youtube':
+      const normal = lastLinkObject.normal.filter((val) => val.ext === 'mp4');
+      const video = lastLinkObject.video_only.filter(
+        (val) => val.ext === 'mp4',
+      );
+      const audio = lastLinkObject.audio_only.filter(
+        (val) => val.ext === 'm4a',
+      );
       return (
-        <Card>
+        <Card centered fluid>
           <Image src={lastLinkObject.thumbnail} />
           <Card.Content>
-            <Card.Header>Matthew</Card.Header>
+            <Card.Header>{lastLinkObject.title}</Card.Header>
             <Card.Meta>
-              <span className="date">Joined in 2015</span>
+              <span className="date">{lastLinkObject.uploader}</span>
             </Card.Meta>
             <Card.Description>
-              Matthew is a musician living in Nashville.
+              <Message style={{ textAlign: 'center' }} info>
+                <Message.Header>
+                  SELECT DOWNLOAD TYPE &nbsp;
+                  <Icon name="download" />
+                </Message.Header>
+              </Message>
             </Card.Description>
           </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name="user" />
-              22 Friends
-            </a>
+
+          <Card.Content style={{ margin: '0 auto' }} extra>
+            <Dropdown
+              scrolling
+              upward
+              compact
+              text="Video with sound"
+              icon="video camera"
+              labeled
+              button
+              className="icon"
+            >
+              <Dropdown.Menu>
+                <Dropdown.Header icon="filter" content="Select quality:" />
+                <Dropdown.Divider />
+                {normal.map((val, index) => (
+                  <Dropdown.Item
+                    key={index}
+                    text={val.format.toUpperCase() + ` (.${val.ext})`}
+                  />
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown
+              scrolling
+              upward
+              compact
+              text="Video (no sound)"
+              icon="camera"
+              labeled
+              button
+              className="icon"
+            >
+              <Dropdown.Menu>
+                <Dropdown.Header icon="filter" content="Select quality:" />
+                <Dropdown.Divider />
+                {video.map((val, index) => (
+                  <Dropdown.Item
+                    key={index}
+                    text={val.format.toUpperCase() + ` (.${val.ext})`}
+                  />
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown
+              scrolling
+              upward
+              compact
+              text="Sound (no video)"
+              icon="music"
+              labeled
+              button
+              className="icon"
+            >
+              <Dropdown.Menu>
+                <Dropdown.Header icon="filter" content="Select quality:" />
+                <Dropdown.Divider />
+                {audio.map((val, index) => (
+                  <Dropdown.Item
+                    key={index}
+                    text={val.format.toUpperCase() + ` (.${val.ext})`}
+                  />
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
           </Card.Content>
         </Card>
       );
     case 'facebook':
+      console.log(lastLinkObject);
       return (
         <Card>
           <Image src={lastLinkObject.thumbnail} />

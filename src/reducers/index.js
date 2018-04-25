@@ -6,5 +6,6 @@ import lastGetStatus from './lastGetStatus';
 export default combineReducers({
   activePage,
   inputUrl,
+  /* lastGetStatus: 'success' 'fail' 'blank' 'not sp', 'error' */
   lastGetStatus,
 });

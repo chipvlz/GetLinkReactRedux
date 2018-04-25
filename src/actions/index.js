@@ -38,9 +38,9 @@ export const getLinkAjax = () => {
           dispatch(saveLinkAndStatus(dataResponse, 'fail'));
         }
       } else if (!getState().inputUrl.trim()) {
-        dispatch(saveLinkAndStatus({}, 'error'));
+        dispatch(saveLinkAndStatus({}, 'blank'));
       } else {
-        throw 'URL not supported';
+        dispatch(saveLinkAndStatus({}, 'not sp'));
       }
     } catch (error) {
       dispatch(saveLinkAndStatus({}, 'error'));

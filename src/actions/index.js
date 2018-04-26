@@ -17,21 +17,24 @@ export const saveLinkAndStatus = (linkData, status) => ({
   // linkData is an Object
   linkData,
 });
+export const startGetLink = {
+  type: 'START_GET_LINK',
+};
 export const getLinkAjax = () => {
   /*
     lastGetLinkStatus = {
-      status: error => client error ,fail => server error, success => get link success
+      status: error => client error ,fail => server error, success => get link success, fetching => is fetching
       message: 
     }
   */
   return async (dispatch, getState) => {
     try {
+      dispatch(startGetLink);
       if (checkLinkType(getState().inputUrl)) {
         const response = await axios.post(getlinkEndpoint, {
           url: getState().inputUrl,
         });
         const dataResponse = response.data;
-        console.log(dataResponse['status']);
         if (dataResponse['status'] === 'success') {
           dispatch(saveLinkAndStatus(dataResponse, 'success'));
         } else if (dataResponse['status'] === 'fail') {

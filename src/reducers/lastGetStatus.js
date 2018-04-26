@@ -1,13 +1,28 @@
-const lastGetStatus = (state = [], action) => {
+const lastGetStatus = (
+  state = [
+    {
+      status: 'init',
+      linkObject: {},
+    },
+  ],
+  action,
+) => {
   switch (action.type) {
-    case 'SAVE_LINK_AND_STATUS':
+    case 'START_GET_LINK':
       return [
         ...state,
         {
-          status: action.status,
-          linkObject: action.linkData,
+          status: 'fetching',
         },
       ];
+    case 'SAVE_LINK_AND_STATUS':
+      let currentGetStatus = state.pop();
+      currentGetStatus = {
+        status: action.status,
+        linkObject: action.linkData,
+      };
+      return [...state, currentGetStatus];
+
     default:
       return state;
   }

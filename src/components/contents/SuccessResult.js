@@ -1,8 +1,7 @@
 import React from 'react';
 import { Card, Image, Icon, Dropdown, Menu, Message } from 'semantic-ui-react';
-import './successResult.css';
 
-const successResult = (lastLinkObject) => {
+const successResult = ({ lastLinkObject, onClickDownload }) => {
   switch (lastLinkObject.type) {
     case 'youtube':
       const normal = lastLinkObject.normal.filter((val) => val.ext === 'mp4');
@@ -14,9 +13,18 @@ const successResult = (lastLinkObject) => {
       );
       return (
         <Card centered fluid>
-          <Image src={lastLinkObject.thumbnail} />
+          <a href={lastLinkObject.webpage_url} target="_blank">
+            <Image
+              style={{ margin: '0 auto' }}
+              src={lastLinkObject.thumbnail}
+            />
+          </a>
           <Card.Content>
-            <Card.Header>{lastLinkObject.title}</Card.Header>
+            <Card.Header>
+              <a href={lastLinkObject.webpage_url} target="_blank">
+                {lastLinkObject.title}
+              </a>
+            </Card.Header>
             <Card.Meta>
               <span className="date">{lastLinkObject.uploader}</span>
             </Card.Meta>
@@ -48,6 +56,11 @@ const successResult = (lastLinkObject) => {
                   <Dropdown.Item
                     key={index}
                     text={val.format.toUpperCase() + ` (.${val.ext})`}
+                    onClick={() =>
+                      onClickDownload(this, {
+                        links: val,
+                      })
+                    }
                   />
                 ))}
               </Dropdown.Menu>
@@ -69,6 +82,11 @@ const successResult = (lastLinkObject) => {
                   <Dropdown.Item
                     key={index}
                     text={val.format.toUpperCase() + ` (.${val.ext})`}
+                    onClick={() =>
+                      onClickDownload(this, {
+                        links: val,
+                      })
+                    }
                   />
                 ))}
               </Dropdown.Menu>
@@ -89,7 +107,15 @@ const successResult = (lastLinkObject) => {
                 {audio.map((val, index) => (
                   <Dropdown.Item
                     key={index}
-                    text={val.format.toUpperCase() + ` (.${val.ext})`}
+                    text={
+                      val.format.toUpperCase() +
+                      ` (.${val.ext}) (Download and change extenstion to .m4a)`
+                    }
+                    onClick={() =>
+                      onClickDownload(this, {
+                        links: val,
+                      })
+                    }
                   />
                 ))}
               </Dropdown.Menu>

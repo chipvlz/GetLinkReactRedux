@@ -16,5 +16,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onChangeUrl: (e) => {
     dispatch(inputUrl(e.target.value));
   },
+  onClickDownload: (e, { links }) => {
+    const a = document.createElement('a');
+    a.target = '_blank';
+    a.href = links.url;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

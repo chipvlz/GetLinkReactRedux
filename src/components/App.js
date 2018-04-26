@@ -1,18 +1,18 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Container } from 'semantic-ui-react';
-import ShowLogo from '../containers/ShowLogo';
-import ActiveMenu from '../containers/ActiveMenu';
-import ActiveContent from '../containers/ActiveContent';
+import LogoContainer from '../containers/LogoContainer';
+import MenuContainer from '../containers/MenuContainer';
+import ContentContainer from '../containers/ContentContainer';
 import './App.css';
 
 const App = () => {
   return (
     <div>
       <Container>
-        <ShowLogo />
-        <ActiveMenu />
-        <ActiveContent />
+        <LogoContainer />
+        <MenuContainer />
+        <ContentContainer />
       </Container>
     </div>
   );

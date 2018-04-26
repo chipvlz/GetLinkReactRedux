@@ -11,6 +11,7 @@ const Content = ({
   lastGetStatus,
   onClickGetLink,
   onChangeUrl,
+  onClickDownload,
 }) => {
   const getContent = (activePage) => {
     switch (activePage) {
@@ -21,6 +22,7 @@ const Content = ({
             lastGetStatus={lastGetStatus}
             onClickGetLink={onClickGetLink}
             onChangeUrl={onChangeUrl}
+            onClickDownload={onClickDownload}
           />
         );
       case 'sphosts':

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { testYoutubeUrl, getlinkEndpoint } from '../utils/devenv';
 import checkLinkType from '../utils/checkLinkType';
 
 export const inputUrl = (url) => ({
@@ -30,9 +29,10 @@ export const getLinkAjax = () => {
   return async (dispatch, getState) => {
     try {
       dispatch(startGetLink);
-      if (checkLinkType(getState().inputUrl)) {
-        const response = await axios.post(getlinkEndpoint, {
-          url: getState().inputUrl,
+      const url = getState().inputUrl.trim();
+      if (checkLinkType(url)) {
+        const response = await axios.post('https://apigetlink.vuhuucuong.com/', {
+          url: url,
         });
         const dataResponse = response.data;
         if (dataResponse['status'] === 'success') {
@@ -40,7 +40,7 @@ export const getLinkAjax = () => {
         } else if (dataResponse['status'] === 'fail') {
           dispatch(saveLinkAndStatus(dataResponse, 'fail'));
         }
-      } else if (!getState().inputUrl.trim()) {
+      } else if (!url) {
         dispatch(saveLinkAndStatus({}, 'blank'));
       } else {
         dispatch(saveLinkAndStatus({}, 'not sp'));

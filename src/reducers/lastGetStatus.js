@@ -16,12 +16,13 @@ const lastGetStatus = (
         },
       ];
     case 'SAVE_LINK_AND_STATUS':
-      let currentGetStatus = state.pop();
-      currentGetStatus = {
+      const oldState = [...state];
+      let lastGetStatus = oldState.pop();
+      lastGetStatus = {
         status: action.status,
         linkObject: action.linkData,
       };
-      return [...state, currentGetStatus];
+      return [...oldState, lastGetStatus];
 
     default:
       return state;

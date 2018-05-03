@@ -1,0 +1,10 @@
+.footer-with-love {
+  font-family: 'Inconsolata';
+  position: fixed;
+  bottom: 1vh;
+  width: 100%;
+  text-align: center;
+}
+#heart-icon {
+  color: red;
+}

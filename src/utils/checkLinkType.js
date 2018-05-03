@@ -5,6 +5,9 @@ const checkLinkType = (url) => {
     /^(?:https:\/\/|http:\/\/)?(?:www.)?youtube.com\/.*$/,
     //facebook
     /^(?:https:\/\/|http:\/\/)?(?:www.)?facebook.com\/.*$/,
+    //soundcloud
+    /^(?:https:\/\/|http:\/\/)?(?:www.)?soundcloud.com\/.*$/,
+    /^(?:https:\/\/|http:\/\/)?(?:www.)?instagram.com\/.*$/,
   ];
   reArr.forEach((re) => {
     if (re.test(url)) {

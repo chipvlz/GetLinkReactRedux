@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react';
 import LogoContainer from '../containers/LogoContainer';
 import MenuContainer from '../containers/MenuContainer';
 import ContentContainer from '../containers/ContentContainer';
+import Footer from './Footer';
 import './App.css';
 
 const App = () => {
@@ -14,31 +15,8 @@ const App = () => {
         <MenuContainer />
         <ContentContainer />
       </Container>
+      <Footer />
     </div>
   );
 };
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       activeItem: 'getlink',
-//     };
-//     this.handleChangeActive = this.handleChangeActive.bind(this);
-//   }
-
-//   handleChangeActive(e, { name }) {
-//     this.setState({ activeItem: name });
-//   }
-//   render() {
-//     const activeItem = this.state.activeItem;
-//     return (
-//       <Container>
-//         <Logo />
-//         <Menu activeItem={activeItem} onClick={this.handleChangeActive} />
-//         <Content activeItem={activeItem} />
-//       </Container>
-//     );
-//   }
-// }
-
 export default App;

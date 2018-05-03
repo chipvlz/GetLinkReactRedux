@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Segment } from 'semantic-ui-react';
-import GetLink from './contents/ContentGetLink';
+import { Segment, Message } from 'semantic-ui-react';
+import GetLink from './Contents/ContentGetLink';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Content.css';
+import SupportedHosts from './Contents/ContentSupportedHosts';
+import AboutProject from './Contents/ContentAboutProject';
+import HowTo from './Contents/ContentHowTo';
 
 const Content = ({
   activePage,
@@ -11,7 +14,7 @@ const Content = ({
   lastGetStatus,
   onClickGetLink,
   onChangeUrl,
-  onClickDownload,
+  onChangePage,
 }) => {
   const getContent = (activePage) => {
     switch (activePage) {
@@ -22,19 +25,23 @@ const Content = ({
             lastGetStatus={lastGetStatus}
             onClickGetLink={onClickGetLink}
             onChangeUrl={onChangeUrl}
-            onClickDownload={onClickDownload}
+            onChangePage={onChangePage}
           />
         );
       case 'sphosts':
-        return '';
-      case 'tasks':
-        return '';
-      case 'aboutme':
-        return '';
+        return <SupportedHosts />;
+      case 'howto':
+        return <HowTo />;
       case 'aboutprj':
-        return '';
+        return <AboutProject />;
       default:
-        return 'What?';
+        return (
+          <Message negative className="info-message">
+            <Message.Header>
+              Something went wrong! Please try again!
+            </Message.Header>
+          </Message>
+        );
     }
   };
   return (

@@ -1,0 +1,24 @@
+.notify {
+  font-weight: 600;
+}
+.main-form {
+  margin: 20px auto 20px;
+  width: 80%;
+}
+.show-result {
+  width: 70%;
+  margin: 0 auto;
+}
+.info-message {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto !important;
+}
+.div-get-link-list {
+  text-align: center;
+  font-family: 'Inconsolata';
+  font-size: 1.5rem;
+}
+.list-hosts {
+  color: red;
+}

@@ -15,6 +15,14 @@ const MenuApp = ({ activeItem, onClick }) => {
         GET LINK
       </Menu.Item>
       <Menu.Item
+        name="howto"
+        active={activeItem === 'howto'}
+        onClick={onClick}
+      >
+        <Icon name="map" />
+        HOW TO USE
+      </Menu.Item>
+      <Menu.Item
         name="sphosts"
         active={activeItem === 'sphosts'}
         onClick={onClick}
@@ -29,14 +37,6 @@ const MenuApp = ({ activeItem, onClick }) => {
       >
         <Icon name="code" />
         ABOUT THIS PROJECT
-      </Menu.Item>
-      <Menu.Item
-        name="aboutme"
-        active={activeItem === 'aboutme'}
-        onClick={onClick}
-      >
-        <Icon name="address book outline" />
-        ABOUT ME
       </Menu.Item>
     </Menu>
   );

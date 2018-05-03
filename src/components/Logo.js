@@ -7,7 +7,6 @@ const Logo = ({ onLogoClick }) => {
   return (
     <Menu id="logo" secondary size="large" borderless>
       <Menu.Item name="home" onClick={onLogoClick}>
-        <Icon name="terminal" />
         [GET LINK] Project
       </Menu.Item>
     </Menu>
